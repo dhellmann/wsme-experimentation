@@ -15,6 +15,7 @@ setup(
     install_requires = [
         "pecan",
         "wsme",
+        "requests",
     ],
     test_suite = 'mydemo',
     zip_safe = False,
