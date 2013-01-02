@@ -52,6 +52,13 @@ r = requests.get(strings_url,
                          ])
 show_results(r)
 
+print 'HTTP GET Pairs, without indexes, separate lists'
+r = requests.get(pairs_url,
+                 params={'input.left': ['a', 'b'],
+                         'input.right': ['A', 'B'],
+                         })
+show_results(r)
+
 print 'HTTP GET Pairs, without indexes, hand-encoded'
 r = requests.get(pairs_url +
                  '?input.left=a&input.right=A&input.left=b&input.right=B')
