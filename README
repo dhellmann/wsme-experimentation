@@ -1,0 +1,63 @@
+# WSME Experimentation
+
+This repo contains some test files for experimenting with WSME and
+Pecan. To use them, first run
+
+  $ python setup.py develop
+
+to install the dependencies and configure the test app.
+
+Then start the server in one window with
+
+  $ pecan serve config.py
+
+and run the client in another window with
+
+  $ python client.py
+
+The output will look like
+  
+  HTTP GET Strings, using indexes
+  URL : http://127.0.0.1:8080/strings?input%5B1%5D=b&input%5B0%5D=a
+  TEXT: u'["a", "b"]'
+  JSON: [u'a', u'b']
+  
+  HTTP GET Pairs, using indexes
+  URL : http://127.0.0.1:8080/pairs?input%5B0%5D.right=A&input%5B1%5D.right=B&input%5B0%5D.left=a&input%5B1%5D.left=b
+  TEXT: u'[{"right": "A", "left": "a"}, {"right": "B", "left": "b"}]'
+  JSON: [{u'right': u'A', u'left': u'a'}, {u'right': u'B', u'left': u'b'}]
+  
+  HTTP GET Strings, without indexes, one
+  URL : http://127.0.0.1:8080/strings?input=a
+  TEXT: u'["a"]'
+  JSON: [u'a']
+  
+  HTTP GET Strings, without indexes, multiple
+  URL : http://127.0.0.1:8080/strings?input=a&input=b
+  TEXT: u'["a", "b"]'
+  JSON: [u'a', u'b']
+  
+  HTTP GET Strings, without indexes, multiple, list (BROKEN)
+  URL : http://127.0.0.1:8080/strings?input=b
+  TEXT: u'["b"]'
+  JSON: [u'b']
+  
+  HTTP GET Pairs, without indexes, hand-encoded
+  URL : http://127.0.0.1:8080/pairs?input.left=a&input.right=A&input.left=b&input.right=B
+  TEXT: u'[{"right": "A", "left": "a"}, {"right": "B", "left": "b"}]'
+  JSON: [{u'right': u'A', u'left': u'a'}, {u'right': u'B', u'left': u'b'}]
+  
+  HTTP GET Pairs, without indexes, tuples (BROKEN)
+  URL : http://127.0.0.1:8080/pairs?input.left=b&input.right=B
+  TEXT: u'[{"right": "B", "left": "b"}]'
+  JSON: [{u'right': u'B', u'left': u'b'}]
+  
+  HTTP GET Pairs, without indexes, nested dicts (BROKEN)
+  URL : http://127.0.0.1:8080/pairs?input=right&input=left&input=right&input=left
+  TEXT: u'{"debuginfo": null, "faultcode": "Server", "faultstring": "__init__() takes exactly 1 argument (2 given)"}'
+  JSON: {u'debuginfo': None, u'faultcode': u'Server', u'faultstring': u'__init__() takes exactly 1 argument (2 given)'}
+  
+  HTTP GET Pairs, without indexes, nested dicts, 2 (BROKEN)
+  URL : http://127.0.0.1:8080/pairs?input%5B1%5D=right&input%5B1%5D=left&input%5B0%5D=right&input%5B0%5D=left
+  TEXT: u'{"debuginfo": null, "faultcode": "Client", "faultstring": "Unknown argument: \\"input[1], input[0]\\""}'
+  JSON: {u'debuginfo': None, u'faultcode': u'Client', u'faultstring': u'Unknown argument: "input[1], input[0]"'}
