@@ -8,7 +8,7 @@ server = {
 app = {
     'root': 'mydemo.controllers.root.RootController',
     'modules': ['mydemo'],
-    'static_root': '%(confdir)s/public', 
+    'static_root': '%(confdir)s/public',
     'template_path': '%(confdir)s/mydemo/templates',
     'debug': True,
     'errors': {
@@ -20,7 +20,8 @@ app = {
 logging = {
     'loggers': {
         'root' : {'level': 'INFO', 'handlers': ['console']},
-        'mydemo': {'level': 'DEBUG', 'handlers': ['console']}
+        'mydemo': {'level': 'DEBUG', 'handlers': ['console']},
+        'wsme': {'level': 'DEBUG', 'handlers': ['console']},
     },
     'handlers': {
         'console': {
