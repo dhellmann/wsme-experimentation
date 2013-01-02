@@ -42,7 +42,12 @@ The output will look like
   URL : http://127.0.0.1:8080/strings?input=b
   TEXT: u'["b"]'
   JSON: [u'b']
-  
+
+  HTTP GET Pairs, without indexes, separate lists
+  URL : http://127.0.0.1:8080/pairs?input.left=a&input.left=b&input.right=A&input.right=B
+  TEXT: u'[{"right": "A", "left": "a"}, {"right": "B", "left": "b"}]'
+  JSON: [{u'right': u'A', u'left': u'a'}, {u'right': u'B', u'left': u'b'}]  
+
   HTTP GET Pairs, without indexes, hand-encoded
   URL : http://127.0.0.1:8080/pairs?input.left=a&input.right=A&input.left=b&input.right=B
   TEXT: u'[{"right": "A", "left": "a"}, {"right": "B", "left": "b"}]'
