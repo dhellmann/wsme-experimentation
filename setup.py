@@ -14,6 +14,7 @@ setup(
     author_email = '',
     install_requires = [
         "pecan",
+        "wsme",
     ],
     test_suite = 'mydemo',
     zip_safe = False,
